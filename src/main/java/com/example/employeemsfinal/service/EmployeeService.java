@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,5 +39,9 @@ public class EmployeeService {
     EmployeeModel employeeUpdate = employeeRepository.findByUserName(username);
     employeeUpdate.setEmployeeName(newName);
 
+  }
+
+  public EmployeeModel getUser(String username){
+  return employeeRepository.findByUserName(username);
   }
 }
