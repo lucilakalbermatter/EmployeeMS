@@ -1,8 +1,8 @@
 package com.example.employeemsfinal.service;
 
 
-import com.example.employeemsfinal.EmployeeModel;
-import com.example.employeemsfinal.EmployeeRepository;
+import com.example.employeemsfinal.dao.EmployeeRepository;
+import com.example.employeemsfinal.entity.EmployeeModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,15 +29,14 @@ public class EmployeeService {
   //create an object of employeeModel
   //delete this object, which belongs to this id
   public void deleteEmployee(String username){
-    EmployeeModel employeeRemoval = EmployeeRepository.findByUserName(username);
+    EmployeeModel employeeRemoval = employeeRepository.findByUserName(username);
     employeeRepository.delete(employeeRemoval);
 
   }
 
   public void updateEmployee(String username, String newName){
-    EmployeeModel employeeUpdate = EmployeeRepository.findByUserName(username);
+    EmployeeModel employeeUpdate = employeeRepository.findByUserName(username);
     employeeUpdate.setEmployeeName(newName);
 
   }
-
 }
