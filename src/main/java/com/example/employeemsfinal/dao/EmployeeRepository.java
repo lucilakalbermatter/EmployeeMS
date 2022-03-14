@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface EmployeeRepository extends JpaRepository<EmployeeModel, Long> {
 
     EmployeeModel findByUserName(String userName);
-
 }

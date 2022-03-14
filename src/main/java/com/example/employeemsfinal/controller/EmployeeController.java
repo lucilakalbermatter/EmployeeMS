@@ -1,6 +1,7 @@
 package com.example.employeemsfinal.controller;
 
 import com.example.employeemsfinal.entity.EmployeeModel;
+import com.example.employeemsfinal.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
