@@ -19,26 +19,25 @@ public class EmployeeController {
     @GetMapping
     public List<EmployeeModel> findAll() {
         List<EmployeeModel> result = new ArrayList<>();
-        employeeService.findAll().forEach(result::add);
+        employeeService.findEmployee();
         return result;
     }
 
 
-    @GetMapping(value = "/{id}")
-    public EmployeeModel getUser(@PathVariable(value = "id") long id){
-        return employeeService.findById(id)
-                .orElseThrow();
+    @GetMapping(value = "/{username}")
+    public EmployeeModel getUser(@PathVariable(value = "username") String username){
+        return employeeService.getUser(username);
     }
 
     @PostMapping
     public EmployeeModel addEmployee(@RequestBody EmployeeModel newEmployee){
-        return employeeService.save(newEmployee);
+        return employeeService.saveEmployee(newEmployee);
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value="/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete (@PathVariable("id") Long id){
-        employeeService.deleteById(id);
+    public void delete (@PathVariable("username") String username){
+        employeeService.deleteEmployee(username);
     }
 }
 
