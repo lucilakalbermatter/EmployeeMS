@@ -66,5 +66,9 @@ public class EmployeeService implements UserDetailsService {
 
 
     return new org.springframework.security.core.userdetails.User(employee.getUsername(),employee.getPassword(),employee.getAuthorities());
+
+  public EmployeeModel addEmployee(EmployeeModel newEmployee){
+    return employeeRepository.save(newEmployee);
+
   }
 }
