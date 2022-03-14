@@ -1,9 +1,6 @@
 package com.example.employeemsfinal.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,7 +24,7 @@ public class EmployeeModel implements UserDetails {
             sequenceName = "employee_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String employeeName;
     private String userName;
@@ -41,15 +38,15 @@ public class EmployeeModel implements UserDetails {
     @JoinColumn(nullable = false,
             name = "id"
     )
+    @Transient
     private EmployeeDepartment employeeDepartment;
 
     //Constructor without ID because it's generated automatically
-    public EmployeeModel(String employeeName, String userName, String password, Role employeeRole, EmployeeDepartment employeeDepartment) {
+    public EmployeeModel(String employeeName, String userName, String password, Role employeeRole) {
         this.employeeName = employeeName;
         this.userName = userName;
         this.password = password;
         this.employeeRole = employeeRole;
-        this.employeeDepartment = employeeDepartment;
     }
 
 

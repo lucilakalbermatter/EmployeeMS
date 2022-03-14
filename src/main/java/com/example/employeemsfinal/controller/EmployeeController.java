@@ -1,6 +1,8 @@
 package com.example.employeemsfinal.controller;
 
+import com.example.employeemsfinal.entity.EmployeeDepartment;
 import com.example.employeemsfinal.entity.EmployeeModel;
+import com.example.employeemsfinal.entity.EmployeePOJO;
 import com.example.employeemsfinal.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,16 +31,10 @@ public class EmployeeController {
         return employeeService.getUser(username);
     }
 
-    @PostMapping
-    public EmployeeModel addEmployee(@RequestBody EmployeeModel newEmployee){
-        return employeeService.addEmployee(newEmployee);
-    }
-
-    @DeleteMapping(value="/{username}")
-    @ResponseStatus(HttpStatus.OK)
-    public void delete (@PathVariable("username") String username){
-        employeeService.deleteEmployee(username);
-    }
+  @PostMapping
+  public EmployeeModel addEmployee(@RequestBody EmployeePOJO newEmployee) {
+    return employeeService.saveEmployee(newEmployee);
+        }
 }
 
 
