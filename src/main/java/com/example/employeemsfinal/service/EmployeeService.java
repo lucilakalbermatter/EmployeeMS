@@ -44,4 +44,8 @@ public class EmployeeService {
   public EmployeeModel getUser(String username){
   return employeeRepository.findByUserName(username);
   }
+
+  public EmployeeModel addEmployee(EmployeeModel newEmployee){
+    return employeeRepository.save(newEmployee);
+  }
 }
