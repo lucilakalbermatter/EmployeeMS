@@ -31,18 +31,10 @@ public class EmployeeController {
         return employeeService.getUser(username);
     }
 
-    @PostMapping
-    public EmployeeModel addEmployee(@RequestBody EmployeePOJO newEmployee){
-        return employeeService.saveEmployee(newEmployee);
-    }
-
-
-
-    @DeleteMapping(value="/{username}")
-    @ResponseStatus(HttpStatus.OK)
-    public void delete (@PathVariable("username") String username){
-        employeeService.deleteEmployee(username);
-    }
+  @PostMapping
+  public EmployeeModel addEmployee(@RequestBody EmployeePOJO newEmployee) {
+    return employeeService.saveEmployee(newEmployee);
+        }
 }
 
 

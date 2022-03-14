@@ -36,7 +36,7 @@ public class EmployeeModel implements UserDetails {
     //Many employees can be in one department
     @ManyToOne
     @JoinColumn(nullable = false,
-            name = "employeeDepartment_id"
+            name = "id"
     )
     @Transient
     private EmployeeDepartment employeeDepartment;
