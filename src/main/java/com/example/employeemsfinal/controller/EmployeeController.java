@@ -31,7 +31,7 @@ public class EmployeeController {
 
     @PostMapping
     public EmployeeModel addEmployee(@RequestBody EmployeeModel newEmployee){
-        return employeeService.saveEmployee(newEmployee);
+        return employeeService.addEmployee(newEmployee);
     }
 
     @DeleteMapping(value="/{username}")
