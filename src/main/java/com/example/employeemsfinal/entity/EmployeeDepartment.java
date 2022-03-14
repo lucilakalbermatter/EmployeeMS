@@ -20,10 +20,11 @@ public class EmployeeDepartment {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.IDENTITY,
             generator = "department_sequence"
     )
     private Long id;
+    @Transient
     private String departmentName;
 
     public EmployeeDepartment(String departmentName) {

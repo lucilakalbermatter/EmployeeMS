@@ -1,8 +1,12 @@
 package com.example.employeemsfinal.service;
 
 
+import com.example.employeemsfinal.dao.DepartmentsRepository;
 import com.example.employeemsfinal.dao.EmployeeRepository;
+import com.example.employeemsfinal.entity.EmployeeDepartment;
 import com.example.employeemsfinal.entity.EmployeeModel;
+import com.example.employeemsfinal.entity.EmployeePOJO;
+import com.example.employeemsfinal.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,14 +27,26 @@ public class EmployeeService implements UserDetailsService {
    private final EmployeeRepository employeeRepository;
 
 
+
   //create methods for find all, save, delete //see class employeeController
   public List <EmployeeModel> findEmployee(){
     return employeeRepository.findAll();
   }
 
 
-  public EmployeeModel saveEmployee(EmployeeModel employeeModel){
-    return employeeRepository.save(employeeModel);
+  public EmployeeModel saveEmployee(EmployeePOJO employeePojo){
+
+
+
+    EmployeeModel newEmployee = new EmployeeModel();
+            newEmployee.setEmployeeName(employeePojo.getEmployeeName());
+            newEmployee.setUserName(employeePojo.getUserName());
+            newEmployee.setPassword(employeePojo.getPassword());
+            newEmployee.setEmployeeRole(Role.EMPLOYEE);
+
+
+
+    return employeeRepository.save(newEmployee);
   }
 
   //inside this method call a method from repo. -->findById
@@ -67,4 +83,6 @@ public class EmployeeService implements UserDetailsService {
 
     return new org.springframework.security.core.userdetails.User(employee.getUsername(),employee.getPassword(),employee.getAuthorities());
   }
+
+
 }
