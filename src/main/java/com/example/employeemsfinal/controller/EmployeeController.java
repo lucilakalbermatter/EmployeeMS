@@ -20,9 +20,8 @@ public class EmployeeController {
 
     @GetMapping
     public List<EmployeeModel> findAll() {
-        List<EmployeeModel> result = new ArrayList<>();
-        employeeService.findEmployee();
-        return result;
+       return employeeService.findEmployee();
+
     }
 
 

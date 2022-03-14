@@ -29,7 +29,7 @@ public class EmployeeService implements UserDetailsService {
 
 
   //create methods for find all, save, delete //see class employeeController
-  public List <EmployeeModel> findEmployee(){
+  public List<EmployeeModel> findEmployee(){
     return employeeRepository.findAll();
   }
 
