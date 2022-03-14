@@ -4,14 +4,21 @@ package com.example.employeemsfinal.service;
 import com.example.employeemsfinal.dao.EmployeeRepository;
 import com.example.employeemsfinal.entity.EmployeeModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class EmployeeService {
+public class EmployeeService implements UserDetailsService {
 
    private final EmployeeRepository employeeRepository;
 
@@ -45,7 +52,23 @@ public class EmployeeService {
   return employeeRepository.findByUserName(username);
   }
 
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+    EmployeeModel employee= employeeRepository.findByUserName(username);
+
+    if(employee == null){
+      throw new UsernameNotFoundException("Employee not found");
+    }
+
+   Collection<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+
+
+
+    return new org.springframework.security.core.userdetails.User(employee.getUsername(),employee.getPassword(),employee.getAuthorities());
+
   public EmployeeModel addEmployee(EmployeeModel newEmployee){
     return employeeRepository.save(newEmployee);
+
   }
 }

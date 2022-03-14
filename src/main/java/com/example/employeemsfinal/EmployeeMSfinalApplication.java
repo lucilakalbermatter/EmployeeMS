@@ -13,9 +13,6 @@ public class EmployeeMSfinalApplication {
         SpringApplication.run(EmployeeMSfinalApplication.class, args);
     }
 
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+
 
 }

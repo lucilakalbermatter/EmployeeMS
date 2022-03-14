@@ -52,6 +52,8 @@ public class EmployeeModel implements UserDetails {
         this.employeeDepartment = employeeDepartment;
     }
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority =
